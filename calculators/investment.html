@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator | Compound Interest Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Investment Calculator</h1>
+                <p>Calculate your investment growth with compound interest</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Investment Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="initial">Initial Investment</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="initial" value="10000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monthly">Monthly Contribution</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="monthly" value="500" min="0" step="50">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="years">Time Period</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="years" value="20" min="1" max="50" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnRate">Expected Return</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="returnRate" value="8" min="0" max="30" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <small class="input-help">Historical stock market average: ~10%</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compound">Compound Frequency</label>
+                        <select id="compound">
+                            <option value="12" selected>Monthly</option>
+                            <option value="4">Quarterly</option>
+                            <option value="1">Annually</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Future Value</h2>
+                        <div class="result-value-large" id="futureValue">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Total Contributions</span>
+                                <strong id="totalContributions">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Total Earnings</span>
+                                <strong id="totalEarnings">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Return on Investment</span>
+                                <strong id="roi">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Initial Investment</span>
+                            <span class="summary-value" id="initialDisplay">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Monthly Contributions</span>
+                            <span class="summary-value" id="monthlyDisplay">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Investment Period</span>
+                            <span class="summary-value" id="yearsDisplay">0 years</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Compound Interest</h2>
+                <p>Compound interest is the interest calculated on both the initial principal and the accumulated interest from previous periods. It's often called "interest on interest" and can significantly boost your investment growth over time.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculateInvestment() {
+        const initial = parseFloat(document.getElementById("initial").value) || 0
+        const monthly = parseFloat(document.getElementById("monthly").value) || 0
+        const years = parseFloat(document.getElementById("years").value) || 0
+        const returnRate = parseFloat(document.getElementById("returnRate").value) || 0
+        const compoundFreq = parseFloat(document.getElementById("compound").value) || 12
+
+        const rate = returnRate / 100 / compoundFreq
+        const periods = years * compoundFreq
+        const monthlyPeriodsPerYear = 12 / compoundFreq
+
+        // Future value of initial investment
+        const fvInitial = initial * Math.pow(1 + rate, periods)
+
+        // Future value of monthly contributions
+        let fvContributions = 0
+        if (rate > 0) {
+          const contributionPerPeriod = monthly * monthlyPeriodsPerYear
+          fvContributions = contributionPerPeriod * ((Math.pow(1 + rate, periods) - 1) / rate)
+        } else {
+          fvContributions = monthly * 12 * years
+        }
+
+        const futureValue = fvInitial + fvContributions
+        const totalContributions = initial + (monthly * 12 * years)
+        const totalEarnings = futureValue - totalContributions
+        const roi = totalContributions > 0 ? (totalEarnings / totalContributions) * 100 : 0
+
+        document.getElementById("futureValue").textContent = formatCurrency(futureValue)
+        document.getElementById("totalContributions").textContent = formatCurrency(totalContributions)
+        document.getElementById("totalEarnings").textContent = formatCurrency(totalEarnings)
+        document.getElementById("roi").textContent = roi.toFixed(2) + "%"
+        document.getElementById("initialDisplay").textContent = formatCurrency(initial)
+        document.getElementById("monthlyDisplay").textContent = formatCurrency(monthly)
+        document.getElementById("yearsDisplay").textContent = years + " years"
+      }
+
+      function shareCalculation() {
+        const text = `My investment could grow to ${document.getElementById("futureValue").textContent}!`
+        if (navigator.share) {
+          navigator.share({ title: "Investment Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("initial").addEventListener("input", calculateInvestment)
+      document.getElementById("monthly").addEventListener("input", calculateInvestment)
+      document.getElementById("years").addEventListener("input", calculateInvestment)
+      document.getElementById("returnRate").addEventListener("input", calculateInvestment)
+      document.getElementById("compound").addEventListener("change", calculateInvestment)
+      calculateInvestment()
+    </script>
+</body>
+</html>

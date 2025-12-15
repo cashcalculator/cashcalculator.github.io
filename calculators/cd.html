@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD Calculator | Certificate of Deposit Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>CD Calculator</h1>
+                <p>Calculate your Certificate of Deposit returns and APY</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>CD Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="principal">Initial Deposit</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="principal" value="10000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interestRate">Interest Rate (APR)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="interestRate" value="4.5" min="0" max="20" step="0.01">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="term">CD Term</label>
+                        <select id="term">
+                            <option value="0.25">3 months</option>
+                            <option value="0.5">6 months</option>
+                            <option value="1" selected>1 year</option>
+                            <option value="1.5">18 months</option>
+                            <option value="2">2 years</option>
+                            <option value="3">3 years</option>
+                            <option value="5">5 years</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compound">Compounding Frequency</label>
+                        <select id="compound">
+                            <option value="365">Daily</option>
+                            <option value="12" selected>Monthly</option>
+                            <option value="4">Quarterly</option>
+                            <option value="1">Annually</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Maturity Value</h2>
+                        <div class="result-value-large" id="maturityValue">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Principal</span>
+                                <strong id="principalDisplay">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Interest Earned</span>
+                                <strong id="interestEarned">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>APY (Annual Percentage Yield)</span>
+                                <strong id="apy">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">CD Term</span>
+                            <span class="summary-value" id="termDisplay">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Maturity Date</span>
+                            <span class="summary-value" id="maturityDate">-</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Certificates of Deposit</h2>
+                <p>A Certificate of Deposit (CD) is a savings account that holds a fixed amount of money for a fixed period of time. In exchange for leaving your money untouched, the bank pays you interest at a guaranteed rate.</p>
+                <p><strong>APY vs APR:</strong> APY (Annual Percentage Yield) accounts for compound interest, while APR does not. APY gives you a more accurate picture of your actual returns.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculateCD() {
+        const principal = parseFloat(document.getElementById("principal").value) || 0
+        const interestRate = parseFloat(document.getElementById("interestRate").value) || 0
+        const term = parseFloat(document.getElementById("term").value) || 0
+        const compoundFreq = parseFloat(document.getElementById("compound").value) || 12
+
+        const rate = interestRate / 100
+        const periods = term * compoundFreq
+
+        // Calculate maturity value with compound interest
+        const maturityValue = principal * Math.pow(1 + rate / compoundFreq, periods)
+        const interestEarned = maturityValue - principal
+
+        // Calculate APY
+        const apy = (Math.pow(1 + rate / compoundFreq, compoundFreq) - 1) * 100
+
+        // Calculate maturity date
+        const maturityDate = new Date()
+        maturityDate.setMonth(maturityDate.getMonth() + (term * 12))
+        const maturityDateStr = maturityDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+
+        // Get term display
+        const termSelect = document.getElementById("term")
+        const termDisplay = termSelect.options[termSelect.selectedIndex].text
+
+        document.getElementById("maturityValue").textContent = formatCurrency(maturityValue)
+        document.getElementById("principalDisplay").textContent = formatCurrency(principal)
+        document.getElementById("interestEarned").textContent = formatCurrency(interestEarned)
+        document.getElementById("apy").textContent = apy.toFixed(2) + "%"
+        document.getElementById("termDisplay").textContent = termDisplay
+        document.getElementById("maturityDate").textContent = maturityDateStr
+      }
+
+      function shareCalculation() {
+        const maturity = document.getElementById("maturityValue").textContent
+        const interest = document.getElementById("interestEarned").textContent
+        const text = `My CD will grow to ${maturity} earning ${interest} in interest!`
+        if (navigator.share) {
+          navigator.share({ title: "CD Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("principal").addEventListener("input", calculateCD)
+      document.getElementById("interestRate").addEventListener("input", calculateCD)
+      document.getElementById("term").addEventListener("change", calculateCD)
+      document.getElementById("compound").addEventListener("change", calculateCD)
+      calculateCD()
+    </script>
+</body>
+</html>

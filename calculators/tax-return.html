@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Return Calculator | Refund Estimator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Tax Return Calculator</h1>
+                <p>Estimate your tax refund or amount owed</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Tax Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="income">Total Income</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="income" value="65000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="withheld">Federal Tax Withheld</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="withheld" value="8000" min="0" step="100">
+                        </div>
+                        <small class="input-help">From your W-2 box 2</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deductions">Deductions</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="deductions" value="13850" min="0" step="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="credits">Tax Credits</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="credits" value="0" min="0" step="100">
+                        </div>
+                        <small class="input-help">Child tax credit, education credits, etc.</small>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2 id="resultLabel">Estimated Refund</h2>
+                        <div class="result-value-large" id="refundAmount">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Total Tax Liability</span>
+                                <strong id="taxLiability">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Tax Withheld</span>
+                                <strong id="totalWithheld">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Tax Credits</span>
+                                <strong id="totalCredits">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Taxable Income</span>
+                            <span class="summary-value" id="taxableIncome">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Effective Rate</span>
+                            <span class="summary-value" id="effectiveRate">0%</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Your Tax Return</h2>
+                <p>Your tax refund is the difference between the tax you paid (through withholding) and your actual tax liability. If you paid more than you owe, you get a refund. If you paid less, you owe additional tax.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculateTaxReturn() {
+        const income = parseFloat(document.getElementById("income").value) || 0
+        const withheld = parseFloat(document.getElementById("withheld").value) || 0
+        const deductions = parseFloat(document.getElementById("deductions").value) || 0
+        const credits = parseFloat(document.getElementById("credits").value) || 0
+
+        const taxableIncome = Math.max(0, income - deductions)
+        
+        // Simplified tax calculation (using single brackets)
+        let taxLiability = 0
+        const brackets = [
+          { max: 11000, rate: 0.10, base: 0 },
+          { max: 44725, rate: 0.12, base: 1100 },
+          { max: 95375, rate: 0.22, base: 5147 },
+          { max: 182100, rate: 0.24, base: 16290 },
+          { max: 231250, rate: 0.32, base: 37104 },
+          { max: 578125, rate: 0.35, base: 52832 },
+          { max: Infinity, rate: 0.37, base: 174238.25 }
+        ]
+
+        let previousMax = 0
+        for (const bracket of brackets) {
+          if (taxableIncome > previousMax) {
+            const taxableInBracket = Math.min(taxableIncome, bracket.max) - previousMax
+            taxLiability += taxableInBracket * bracket.rate
+          }
+          previousMax = bracket.max
+          if (taxableIncome <= bracket.max) break
+        }
+
+        taxLiability = Math.max(0, taxLiability - credits)
+
+        const refundOrOwed = withheld - taxLiability
+        const effectiveRate = income > 0 ? (taxLiability / income) * 100 : 0
+
+        // Update UI
+        if (refundOrOwed >= 0) {
+          document.getElementById("resultLabel").textContent = "Estimated Refund"
+          document.getElementById("refundAmount").textContent = formatCurrency(Math.abs(refundOrOwed))
+        } else {
+          document.getElementById("resultLabel").textContent = "Amount Owed"
+          document.getElementById("refundAmount").textContent = formatCurrency(Math.abs(refundOrOwed))
+        }
+
+        document.getElementById("taxLiability").textContent = formatCurrency(taxLiability)
+        document.getElementById("totalWithheld").textContent = formatCurrency(withheld)
+        document.getElementById("totalCredits").textContent = formatCurrency(credits)
+        document.getElementById("taxableIncome").textContent = formatCurrency(taxableIncome)
+        document.getElementById("effectiveRate").textContent = effectiveRate.toFixed(2) + "%"
+      }
+
+      function shareCalculation() {
+        const text = `My estimated tax return: ${document.getElementById("refundAmount").textContent}`
+        if (navigator.share) {
+          navigator.share({ title: "Tax Return Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("income").addEventListener("input", calculateTaxReturn)
+      document.getElementById("withheld").addEventListener("input", calculateTaxReturn)
+      document.getElementById("deductions").addEventListener("input", calculateTaxReturn)
+      document.getElementById("credits").addEventListener("input", calculateTaxReturn)
+      calculateTaxReturn()
+    </script>
+</body>
+</html>

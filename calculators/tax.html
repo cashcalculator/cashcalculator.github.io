@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator | Income Tax Estimator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Tax Calculator</h1>
+                <p>Estimate your federal income tax liability for 2024</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Income Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="income">Annual Income</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="income" value="75000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filingStatus">Filing Status</label>
+                        <select id="filingStatus">
+                            <option value="single" selected>Single</option>
+                            <option value="married">Married Filing Jointly</option>
+                            <option value="married-separate">Married Filing Separately</option>
+                            <option value="head">Head of Household</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deductions">Standard/Itemized Deductions</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="deductions" value="13850" min="0" step="100">
+                        </div>
+                        <small class="input-help">Standard deduction for Single: $13,850</small>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Total Tax</h2>
+                        <div class="result-value-large" id="totalTax">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Taxable Income</span>
+                                <strong id="taxableIncome">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Effective Tax Rate</span>
+                                <strong id="effectiveRate">0%</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Marginal Tax Rate</span>
+                                <strong id="marginalRate">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Gross Income</span>
+                            <span class="summary-value" id="grossIncome">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">After-Tax Income</span>
+                            <span class="summary-value" id="afterTaxIncome">$0</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>How to Use the Tax Calculator</h2>
+                <p>Enter your annual income, select your filing status, and input your deductions to estimate your federal income tax. This calculator uses 2024 tax brackets.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      // 2024 Tax Brackets
+      const taxBrackets = {
+        single: [
+          { max: 11000, rate: 0.10 },
+          { max: 44725, rate: 0.12 },
+          { max: 95375, rate: 0.22 },
+          { max: 182100, rate: 0.24 },
+          { max: 231250, rate: 0.32 },
+          { max: 578125, rate: 0.35 },
+          { max: Infinity, rate: 0.37 }
+        ],
+        married: [
+          { max: 22000, rate: 0.10 },
+          { max: 89050, rate: 0.12 },
+          { max: 190750, rate: 0.22 },
+          { max: 364200, rate: 0.24 },
+          { max: 462500, rate: 0.32 },
+          { max: 693750, rate: 0.35 },
+          { max: Infinity, rate: 0.37 }
+        ]
+      }
+
+      function calculateTax() {
+        const income = parseFloat(document.getElementById("income").value) || 0
+        const filingStatus = document.getElementById("filingStatus").value
+        const deductions = parseFloat(document.getElementById("deductions").value) || 0
+
+        const taxableIncome = Math.max(0, income - deductions)
+        
+        // Use single brackets for all statuses (simplified)
+        const brackets = filingStatus === "married" ? taxBrackets.married : taxBrackets.single
+        
+        let totalTax = 0
+        let previousMax = 0
+        let marginalRate = 0
+
+        for (const bracket of brackets) {
+          if (taxableIncome > previousMax) {
+            const taxableInBracket = Math.min(taxableIncome, bracket.max) - previousMax
+            totalTax += taxableInBracket * bracket.rate
+            marginalRate = bracket.rate * 100
+          }
+          previousMax = bracket.max
+          if (taxableIncome <= bracket.max) break
+        }
+
+        const effectiveRate = income > 0 ? (totalTax / income) * 100 : 0
+        const afterTaxIncome = income - totalTax
+
+        document.getElementById("totalTax").textContent = formatCurrency(totalTax)
+        document.getElementById("taxableIncome").textContent = formatCurrency(taxableIncome)
+        document.getElementById("effectiveRate").textContent = effectiveRate.toFixed(2) + "%"
+        document.getElementById("marginalRate").textContent = marginalRate.toFixed(0) + "%"
+        document.getElementById("grossIncome").textContent = formatCurrency(income)
+        document.getElementById("afterTaxIncome").textContent = formatCurrency(afterTaxIncome)
+      }
+
+      function shareCalculation() {
+        const text = `My estimated tax: ${document.getElementById("totalTax").textContent}`
+        if (navigator.share) {
+          navigator.share({ title: "Tax Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("income").addEventListener("input", calculateTax)
+      document.getElementById("filingStatus").addEventListener("change", calculateTax)
+      document.getElementById("deductions").addEventListener("input", calculateTax)
+      calculateTax()
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator | Body Mass Index Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>BMI Calculator</h1>
+                <p>Calculate your Body Mass Index and health category</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Your Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="unit">Unit System</label>
+                        <select id="unit">
+                            <option value="imperial" selected>Imperial (lb, ft, in)</option>
+                            <option value="metric">Metric (kg, cm)</option>
+                        </select>
+                    </div>
+
+                    <div id="imperialInputs">
+                        <div class="form-group">
+                            <label for="weight">Weight</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="weight" value="170" min="0" step="1">
+                                <span class="input-suffix">lbs</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="heightFeet">Height</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="input-wrapper">
+                                    <input type="number" id="heightFeet" value="5" min="0" max="8" step="1">
+                                    <span class="input-suffix">ft</span>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="number" id="heightInches" value="10" min="0" max="11" step="1">
+                                    <span class="input-suffix">in</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="metricInputs" style="display: none;">
+                        <div class="form-group">
+                            <label for="weightKg">Weight</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="weightKg" value="77" min="0" step="0.1">
+                                <span class="input-suffix">kg</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="heightCm">Height</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="heightCm" value="178" min="0" step="1">
+                                <span class="input-suffix">cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age (Optional)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="age" value="30" min="0" max="120" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Your BMI</h2>
+                        <div class="result-value-large" id="bmiValue">0.0</div>
+                        <div style="text-align: center; font-size: 1.125rem; font-weight: 600; margin-top: 1rem;" id="bmiCategory">-</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Underweight</span>
+                                <strong>&lt; 18.5</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Normal Weight</span>
+                                <strong>18.5 - 24.9</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Overweight</span>
+                                <strong>25 - 29.9</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Obese</span>
+                                <strong>≥ 30</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Healthy Weight Range</span>
+                            <span class="summary-value" id="healthyRange">-</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding BMI</h2>
+                <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. While it's a useful screening tool, it doesn't directly measure body fat percentage and may not be accurate for athletes, pregnant women, or elderly individuals.</p>
+                <p><strong>BMI Categories:</strong></p>
+                <p>• Underweight: BMI less than 18.5<br>• Normal weight: BMI 18.5-24.9<br>• Overweight: BMI 25-29.9<br>• Obese: BMI 30 or greater</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculateBMI() {
+        const unit = document.getElementById("unit").value
+        let weightKg, heightM
+
+        if (unit === "imperial") {
+          const weight = parseFloat(document.getElementById("weight").value) || 0
+          const heightFeet = parseFloat(document.getElementById("heightFeet").value) || 0
+          const heightInches = parseFloat(document.getElementById("heightInches").value) || 0
+
+          // Convert to metric
+          weightKg = weight * 0.453592
+          const totalInches = (heightFeet * 12) + heightInches
+          heightM = totalInches * 0.0254
+        } else {
+          weightKg = parseFloat(document.getElementById("weightKg").value) || 0
+          const heightCm = parseFloat(document.getElementById("heightCm").value) || 0
+          heightM = heightCm / 100
+        }
+
+        const bmi = weightKg / (heightM * heightM)
+
+        let category, categoryClass
+        if (bmi < 18.5) {
+          category = "Underweight"
+          categoryClass = "warning"
+        } else if (bmi < 25) {
+          category = "Normal Weight"
+          categoryClass = "success"
+        } else if (bmi < 30) {
+          category = "Overweight"
+          categoryClass = "warning"
+        } else {
+          category = "Obese"
+          categoryClass = "error"
+        }
+
+        // Calculate healthy weight range
+        const minHealthyWeight = 18.5 * heightM * heightM
+        const maxHealthyWeight = 24.9 * heightM * heightM
+
+        let healthyRange
+        if (unit === "imperial") {
+          const minLbs = minHealthyWeight / 0.453592
+          const maxLbs = maxHealthyWeight / 0.453592
+          healthyRange = `${Math.round(minLbs)} - ${Math.round(maxLbs)} lbs`
+        } else {
+          healthyRange = `${minHealthyWeight.toFixed(1)} - ${maxHealthyWeight.toFixed(1)} kg`
+        }
+
+        document.getElementById("bmiValue").textContent = bmi.toFixed(1)
+        document.getElementById("bmiCategory").textContent = category
+        document.getElementById("healthyRange").textContent = healthyRange
+      }
+
+      function toggleUnit() {
+        const unit = document.getElementById("unit").value
+        if (unit === "imperial") {
+          document.getElementById("imperialInputs").style.display = "block"
+          document.getElementById("metricInputs").style.display = "none"
+        } else {
+          document.getElementById("imperialInputs").style.display = "none"
+          document.getElementById("metricInputs").style.display = "block"
+        }
+        calculateBMI()
+      }
+
+      function shareCalculation() {
+        const bmi = document.getElementById("bmiValue").textContent
+        const category = document.getElementById("bmiCategory").textContent
+        const text = `My BMI is ${bmi} (${category})`
+        if (navigator.share) {
+          navigator.share({ title: "BMI Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("unit").addEventListener("change", toggleUnit)
+      document.getElementById("weight").addEventListener("input", calculateBMI)
+      document.getElementById("heightFeet").addEventListener("input", calculateBMI)
+      document.getElementById("heightInches").addEventListener("input", calculateBMI)
+      document.getElementById("weightKg").addEventListener("input", calculateBMI)
+      document.getElementById("heightCm").addEventListener("input", calculateBMI)
+      document.getElementById("age").addEventListener("input", calculateBMI)
+      calculateBMI()
+    </script>
+</body>
+</html>

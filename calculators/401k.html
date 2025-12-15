@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>401k Calculator | Retirement Savings Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>401k Calculator</h1>
+                <p>Calculate your 401k retirement savings with employer matching</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>401k Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="salary">Annual Salary</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="salary" value="70000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contribution">Your Contribution</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="contribution" value="6" min="0" max="100" step="0.5">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <small class="input-help">IRS max: $23,000 (2024)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employerMatch">Employer Match</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="employerMatch" value="50" min="0" max="100" step="1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matchLimit">Match Limit</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="matchLimit" value="6" min="0" max="100" step="0.5">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <small class="input-help">Maximum % of salary employer will match</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentBalance">Current Balance</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="currentBalance" value="25000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="years">Years Until Retirement</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="years" value="30" min="1" max="50" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnRate">Expected Return</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="returnRate" value="7" min="0" max="20" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Retirement Balance</h2>
+                        <div class="result-value-large" id="futureValue">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Your Contributions</span>
+                                <strong id="yourContributions">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Employer Match</span>
+                                <strong id="employerContributions">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Investment Gains</span>
+                                <strong id="investmentGains">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Annual Contribution</span>
+                            <span class="summary-value" id="annualContribution">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Annual Match</span>
+                            <span class="summary-value" id="annualMatch">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Annual Savings</span>
+                            <span class="summary-value" id="totalAnnual">$0</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding 401k Employer Matching</h2>
+                <p>Many employers match a percentage of your 401k contributions, effectively giving you free money for retirement. For example, if your employer offers a 50% match up to 6% of your salary, they'll contribute $0.50 for every $1.00 you contribute, up to 6% of your salary.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculate401k() {
+        const salary = parseFloat(document.getElementById("salary").value) || 0
+        const contributionPercent = parseFloat(document.getElementById("contribution").value) || 0
+        const employerMatchPercent = parseFloat(document.getElementById("employerMatch").value) || 0
+        const matchLimitPercent = parseFloat(document.getElementById("matchLimit").value) || 0
+        const currentBalance = parseFloat(document.getElementById("currentBalance").value) || 0
+        const years = parseFloat(document.getElementById("years").value) || 0
+        const returnRate = parseFloat(document.getElementById("returnRate").value) || 0
+
+        const annualContribution = salary * (contributionPercent / 100)
+        const matchableAmount = Math.min(annualContribution, salary * (matchLimitPercent / 100))
+        const annualMatch = matchableAmount * (employerMatchPercent / 100)
+        const totalAnnual = annualContribution + annualMatch
+
+        // Calculate future value
+        const monthlyRate = returnRate / 100 / 12
+        const months = years * 12
+
+        // FV of current balance
+        const fvCurrent = currentBalance * Math.pow(1 + monthlyRate, months)
+
+        // FV of monthly contributions
+        const monthlyContribution = totalAnnual / 12
+        let fvContributions = 0
+        if (monthlyRate > 0) {
+          fvContributions = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate)
+        } else {
+          fvContributions = monthlyContribution * months
+        }
+
+        const futureValue = fvCurrent + fvContributions
+        const totalContributed = currentBalance + (annualContribution * years)
+        const totalEmployerMatch = annualMatch * years
+        const investmentGains = futureValue - totalContributed - totalEmployerMatch
+
+        document.getElementById("futureValue").textContent = formatCurrency(futureValue)
+        document.getElementById("yourContributions").textContent = formatCurrency(totalContributed)
+        document.getElementById("employerContributions").textContent = formatCurrency(totalEmployerMatch)
+        document.getElementById("investmentGains").textContent = formatCurrency(investmentGains)
+        document.getElementById("annualContribution").textContent = formatCurrency(annualContribution)
+        document.getElementById("annualMatch").textContent = formatCurrency(annualMatch)
+        document.getElementById("totalAnnual").textContent = formatCurrency(totalAnnual)
+      }
+
+      function shareCalculation() {
+        const text = `My projected 401k balance: ${document.getElementById("futureValue").textContent}!`
+        if (navigator.share) {
+          navigator.share({ title: "401k Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("salary").addEventListener("input", calculate401k)
+      document.getElementById("contribution").addEventListener("input", calculate401k)
+      document.getElementById("employerMatch").addEventListener("input", calculate401k)
+      document.getElementById("matchLimit").addEventListener("input", calculate401k)
+      document.getElementById("currentBalance").addEventListener("input", calculate401k)
+      document.getElementById("years").addEventListener("input", calculate401k)
+      document.getElementById("returnRate").addEventListener("input", calculate401k)
+      calculate401k()
+    </script>
+</body>
+</html>

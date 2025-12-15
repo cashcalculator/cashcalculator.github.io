@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pension Calculator | Retirement Benefit Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Pension Calculator</h1>
+                <p>Calculate your pension benefit and monthly retirement income</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Pension Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="finalSalary">Final Average Salary</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="finalSalary" value="80000" min="0" step="1000">
+                        </div>
+                        <small class="input-help">Average of your highest earning years</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yearsService">Years of Service</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="yearsService" value="25" min="0" max="50" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="benefitMultiplier">Benefit Multiplier</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="benefitMultiplier" value="2" min="0" max="10" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <small class="input-help">Typical range: 1.5% - 2.5% per year of service</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="retirementAge">Retirement Age</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="retirementAge" value="65" min="50" max="75" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Monthly Pension</h2>
+                        <div class="result-value-large" id="monthlyPension">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Annual Pension</span>
+                                <strong id="annualPension">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Replacement Rate</span>
+                                <strong id="replacementRate">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">20-Year Total</span>
+                            <span class="summary-value" id="twentyYearTotal">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">30-Year Total</span>
+                            <span class="summary-value" id="thirtyYearTotal">$0</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Pension Benefits</h2>
+                <p>A defined benefit pension plan provides a specific monthly benefit at retirement based on your salary history and years of service. The formula typically multiplies your final average salary by your years of service and a benefit multiplier (usually 1.5% - 2.5%).</p>
+                <p><strong>Replacement Rate:</strong> The percentage of your pre-retirement income that your pension will replace. Financial experts often recommend aiming for a 70-80% replacement rate from all sources (pension, Social Security, savings).</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculatePension() {
+        const finalSalary = parseFloat(document.getElementById("finalSalary").value) || 0
+        const yearsService = parseFloat(document.getElementById("yearsService").value) || 0
+        const benefitMultiplier = parseFloat(document.getElementById("benefitMultiplier").value) || 0
+
+        const annualPension = finalSalary * (yearsService * (benefitMultiplier / 100))
+        const monthlyPension = annualPension / 12
+        const replacementRate = finalSalary > 0 ? (annualPension / finalSalary) * 100 : 0
+        const twentyYearTotal = annualPension * 20
+        const thirtyYearTotal = annualPension * 30
+
+        document.getElementById("monthlyPension").textContent = formatCurrency(monthlyPension)
+        document.getElementById("annualPension").textContent = formatCurrency(annualPension)
+        document.getElementById("replacementRate").textContent = replacementRate.toFixed(1) + "%"
+        document.getElementById("twentyYearTotal").textContent = formatCurrency(twentyYearTotal)
+        document.getElementById("thirtyYearTotal").textContent = formatCurrency(thirtyYearTotal)
+      }
+
+      function shareCalculation() {
+        const text = `My estimated pension: ${document.getElementById("monthlyPension").textContent}/month`
+        if (navigator.share) {
+          navigator.share({ title: "Pension Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("finalSalary").addEventListener("input", calculatePension)
+      document.getElementById("yearsService").addEventListener("input", calculatePension)
+      document.getElementById("benefitMultiplier").addEventListener("input", calculatePension)
+      document.getElementById("retirementAge").addEventListener("input", calculatePension)
+      calculatePension()
+    </script>
+</body>
+</html>

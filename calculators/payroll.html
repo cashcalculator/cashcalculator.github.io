@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Calculator | Net Pay Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Payroll Calculator</h1>
+                <p>Calculate your net pay after taxes and deductions</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Payroll Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="grossPay">Gross Pay</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="grossPay" value="5000" min="0" step="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="payPeriod">Pay Period</label>
+                        <select id="payPeriod">
+                            <option value="weekly">Weekly</option>
+                            <option value="biweekly" selected>Bi-weekly</option>
+                            <option value="semimonthly">Semi-monthly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filingStatus">Filing Status</label>
+                        <select id="filingStatus">
+                            <option value="single" selected>Single</option>
+                            <option value="married">Married</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state">
+                            <option value="0" selected>No State Tax</option>
+                            <option value="3">California (3%)</option>
+                            <option value="5">New York (5%)</option>
+                            <option value="4">Texas (0%)</option>
+                            <option value="4.5">Other (4.5% avg)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="retirement">401k Contribution</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="retirement" value="6" min="0" max="100" step="0.5">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Net Pay</h2>
+                        <div class="result-value-large" id="netPay">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Gross Pay</span>
+                                <strong id="grossDisplay">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Federal Tax</span>
+                                <strong id="federalTax">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Social Security</span>
+                                <strong id="socialSecurity">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Medicare</span>
+                                <strong id="medicare">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>State Tax</span>
+                                <strong id="stateTax">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>401k</span>
+                                <strong id="retirementDeduction">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Annual Net Pay</span>
+                            <span class="summary-value" id="annualNet">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Deductions</span>
+                            <span class="summary-value" id="totalDeductions">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Take-Home %</span>
+                            <span class="summary-value" id="takeHomePercent">0%</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Payroll Deductions</h2>
+                <p><strong>Federal Income Tax:</strong> Progressive tax based on income level and filing status.</p>
+                <p><strong>FICA Taxes:</strong> Social Security (6.2%) and Medicare (1.45%) are mandatory payroll taxes.</p>
+                <p><strong>Pre-tax Deductions:</strong> 401k contributions reduce your taxable income, lowering your tax burden.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculatePayroll() {
+        const grossPay = parseFloat(document.getElementById("grossPay").value) || 0
+        const payPeriod = document.getElementById("payPeriod").value
+        const stateTaxRate = parseFloat(document.getElementById("state").value) || 0
+        const retirementPercent = parseFloat(document.getElementById("retirement").value) || 0
+
+        // Calculate annual gross
+        let periodsPerYear
+        switch (payPeriod) {
+          case "weekly": periodsPerYear = 52; break
+          case "biweekly": periodsPerYear = 26; break
+          case "semimonthly": periodsPerYear = 24; break
+          case "monthly": periodsPerYear = 12; break
+          default: periodsPerYear = 26
+        }
+        const annualGross = grossPay * periodsPerYear
+
+        // Calculate 401k (pre-tax)
+        const retirementDeduction = grossPay * (retirementPercent / 100)
+        const taxableIncome = grossPay - retirementDeduction
+
+        // Federal tax (simplified progressive rates)
+        let federalTax
+        const annualTaxable = taxableIncome * periodsPerYear
+        if (annualTaxable <= 11000) {
+          federalTax = taxableIncome * 0.10
+        } else if (annualTaxable <= 44725) {
+          federalTax = taxableIncome * 0.12
+        } else {
+          federalTax = taxableIncome * 0.22
+        }
+
+        // FICA taxes
+        const socialSecurity = grossPay * 0.062  // 6.2%
+        const medicare = grossPay * 0.0145        // 1.45%
+
+        // State tax
+        const stateTax = taxableIncome * (stateTaxRate / 100)
+
+        // Calculate net pay
+        const totalDeductions = federalTax + socialSecurity + medicare + stateTax + retirementDeduction
+        const netPay = grossPay - totalDeductions
+        const takeHomePercent = grossPay > 0 ? (netPay / grossPay) * 100 : 0
+        const annualNet = netPay * periodsPerYear
+
+        document.getElementById("netPay").textContent = formatCurrency(netPay)
+        document.getElementById("grossDisplay").textContent = formatCurrency(grossPay)
+        document.getElementById("federalTax").textContent = formatCurrency(federalTax)
+        document.getElementById("socialSecurity").textContent = formatCurrency(socialSecurity)
+        document.getElementById("medicare").textContent = formatCurrency(medicare)
+        document.getElementById("stateTax").textContent = formatCurrency(stateTax)
+        document.getElementById("retirementDeduction").textContent = formatCurrency(retirementDeduction)
+        document.getElementById("annualNet").textContent = formatCurrency(annualNet)
+        document.getElementById("totalDeductions").textContent = formatCurrency(totalDeductions)
+        document.getElementById("takeHomePercent").textContent = takeHomePercent.toFixed(1) + "%"
+      }
+
+      function shareCalculation() {
+        const netPay = document.getElementById("netPay").textContent
+        const text = `My net pay is ${netPay} per paycheck`
+        if (navigator.share) {
+          navigator.share({ title: "Payroll Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("grossPay").addEventListener("input", calculatePayroll)
+      document.getElementById("payPeriod").addEventListener("change", calculatePayroll)
+      document.getElementById("filingStatus").addEventListener("change", calculatePayroll)
+      document.getElementById("state").addEventListener("change", calculatePayroll)
+      document.getElementById("retirement").addEventListener("input", calculatePayroll)
+      calculatePayroll()
+    </script>
+</body>
+</html>

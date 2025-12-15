@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro Calculator | Macronutrient & Calorie Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Macro Calculator</h1>
+                <p>Calculate your daily calorie and macronutrient needs</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Your Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="age" value="30" min="15" max="100" step="1">
+                            <span class="input-suffix">years</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender">
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Weight</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="weight" value="180" min="0" step="1">
+                            <span class="input-suffix">lbs</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="height">Height</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="height" value="70" min="0" step="1">
+                            <span class="input-suffix">inches</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activity">Activity Level</label>
+                        <select id="activity">
+                            <option value="1.2">Sedentary (little or no exercise)</option>
+                            <option value="1.375">Lightly active (1-3 days/week)</option>
+                            <option value="1.55" selected>Moderately active (3-5 days/week)</option>
+                            <option value="1.725">Very active (6-7 days/week)</option>
+                            <option value="1.9">Extremely active (athlete)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal">Goal</label>
+                        <select id="goal">
+                            <option value="-500">Weight Loss (-500 cal/day)</option>
+                            <option value="0" selected>Maintain Weight</option>
+                            <option value="500">Weight Gain (+500 cal/day)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Daily Calories</h2>
+                        <div class="result-value-large" id="dailyCalories">0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Protein</span>
+                                <strong id="protein">0g</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Carbohydrates</span>
+                                <strong id="carbs">0g</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Fat</span>
+                                <strong id="fat">0g</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">BMR (Base Metabolism)</span>
+                            <span class="summary-value" id="bmr">0 cal</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">TDEE (Maintenance)</span>
+                            <span class="summary-value" id="tdee">0 cal</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Weekly Weight Change</span>
+                            <span class="summary-value" id="weeklyChange">0 lbs</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Macronutrients</h2>
+                <p><strong>Protein:</strong> Essential for muscle building and repair. 4 calories per gram. Recommended: 0.8-1g per lb of body weight.</p>
+                <p><strong>Carbohydrates:</strong> Primary energy source. 4 calories per gram. Fills remaining calories after protein and fat.</p>
+                <p><strong>Fat:</strong> Important for hormone production and nutrient absorption. 9 calories per gram. Recommended: 25-30% of total calories.</p>
+                <p><strong>BMR:</strong> Basal Metabolic Rate - calories burned at rest.</p>
+                <p><strong>TDEE:</strong> Total Daily Energy Expenditure - calories burned including activity.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculateMacros() {
+        const age = parseFloat(document.getElementById("age").value) || 0
+        const gender = document.getElementById("gender").value
+        const weightLbs = parseFloat(document.getElementById("weight").value) || 0
+        const heightInches = parseFloat(document.getElementById("height").value) || 0
+        const activityMultiplier = parseFloat(document.getElementById("activity").value) || 1.2
+        const goalAdjustment = parseFloat(document.getElementById("goal").value) || 0
+
+        // Convert to metric
+        const weightKg = weightLbs * 0.453592
+        const heightCm = heightInches * 2.54
+
+        // Calculate BMR using Mifflin-St Jeor Equation
+        let bmr
+        if (gender === "male") {
+          bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5
+        } else {
+          bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161
+        }
+
+        // Calculate TDEE
+        const tdee = bmr * activityMultiplier
+
+        // Adjust for goal
+        const dailyCalories = Math.round(tdee + goalAdjustment)
+
+        // Calculate macros
+        // Protein: 1g per lb of body weight
+        const proteinGrams = Math.round(weightLbs * 1)
+        const proteinCalories = proteinGrams * 4
+
+        // Fat: 25% of total calories
+        const fatCalories = dailyCalories * 0.25
+        const fatGrams = Math.round(fatCalories / 9)
+
+        // Carbs: Remaining calories
+        const carbCalories = dailyCalories - proteinCalories - fatCalories
+        const carbGrams = Math.round(carbCalories / 4)
+
+        // Calculate weekly weight change (3500 cal = 1 lb)
+        const weeklyChange = (goalAdjustment * 7) / 3500
+
+        document.getElementById("dailyCalories").textContent = dailyCalories
+        document.getElementById("protein").textContent = proteinGrams + "g"
+        document.getElementById("carbs").textContent = carbGrams + "g"
+        document.getElementById("fat").textContent = fatGrams + "g"
+        document.getElementById("bmr").textContent = Math.round(bmr) + " cal"
+        document.getElementById("tdee").textContent = Math.round(tdee) + " cal"
+        document.getElementById("weeklyChange").textContent = weeklyChange.toFixed(1) + " lbs"
+      }
+
+      function shareCalculation() {
+        const calories = document.getElementById("dailyCalories").textContent
+        const protein = document.getElementById("protein").textContent
+        const carbs = document.getElementById("carbs").textContent
+        const fat = document.getElementById("fat").textContent
+        const text = `My macros: ${calories} cal/day | P: ${protein} | C: ${carbs} | F: ${fat}`
+        if (navigator.share) {
+          navigator.share({ title: "Macro Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("age").addEventListener("input", calculateMacros)
+      document.getElementById("gender").addEventListener("change", calculateMacros)
+      document.getElementById("weight").addEventListener("input", calculateMacros)
+      document.getElementById("height").addEventListener("input", calculateMacros)
+      document.getElementById("activity").addEventListener("change", calculateMacros)
+      document.getElementById("goal").addEventListener("change", calculateMacros)
+      calculateMacros()
+    </script>
+</body>
+</html>

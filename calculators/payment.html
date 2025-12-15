@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Calculator | Loan Amortization Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calculator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="calculator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Payment Calculator</h1>
+                <p>Calculate loan payments with detailed amortization breakdown</p>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-input-section">
+                    <h2>Loan Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="loanAmount" value="20000" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interestRate">Interest Rate</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="interestRate" value="6" min="0" max="30" step="0.01">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loanTerm">Loan Term</label>
+                        <select id="loanTerm">
+                            <option value="1">1 year</option>
+                            <option value="2">2 years</option>
+                            <option value="3">3 years</option>
+                            <option value="5" selected>5 years</option>
+                            <option value="7">7 years</option>
+                            <option value="10">10 years</option>
+                            <option value="15">15 years</option>
+                            <option value="20">20 years</option>
+                            <option value="30">30 years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calculator-results-section">
+                    <div class="results-card">
+                        <h2>Monthly Payment</h2>
+                        <div class="result-value-large" id="monthlyPayment">$0</div>
+                        
+                        <div class="results-breakdown">
+                            <div class="breakdown-item">
+                                <span>Principal</span>
+                                <strong id="principalAmount">$0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Interest (First Month)</span>
+                                <strong id="firstMonthInterest">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Total Payments</span>
+                            <span class="summary-value" id="totalPayment">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Interest</span>
+                            <span class="summary-value" id="totalInterest">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Number of Payments</span>
+                            <span class="summary-value" id="numPayments">0</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-share" onclick="shareCalculation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Share Calculation
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h2>Understanding Loan Payments</h2>
+                <p>Loan payments are calculated using an amortization schedule where each payment includes both principal and interest. Early in the loan term, more of your payment goes toward interest. As time passes, more goes toward paying down the principal balance.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function calculatePayment() {
+        const loanAmount = parseFloat(document.getElementById("loanAmount").value) || 0
+        const interestRate = parseFloat(document.getElementById("interestRate").value) || 0
+        const loanTerm = parseFloat(document.getElementById("loanTerm").value) || 0
+
+        const monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTerm)
+        const numberOfPayments = loanTerm * 12
+        const totalPayment = monthlyPayment * numberOfPayments
+        const totalInterest = totalPayment - loanAmount
+
+        // Calculate first month's principal and interest
+        const monthlyRate = interestRate / 100 / 12
+        const firstMonthInterest = loanAmount * monthlyRate
+        const firstMonthPrincipal = monthlyPayment - firstMonthInterest
+
+        document.getElementById("monthlyPayment").textContent = formatCurrency(monthlyPayment)
+        document.getElementById("principalAmount").textContent = formatCurrency(firstMonthPrincipal)
+        document.getElementById("firstMonthInterest").textContent = formatCurrency(firstMonthInterest)
+        document.getElementById("totalPayment").textContent = formatCurrency(totalPayment)
+        document.getElementById("totalInterest").textContent = formatCurrency(totalInterest)
+        document.getElementById("numPayments").textContent = numberOfPayments
+      }
+
+      function shareCalculation() {
+        const text = `My loan payment: ${document.getElementById("monthlyPayment").textContent}/month`
+        if (navigator.share) {
+          navigator.share({ title: "Payment Calculator", text }).catch(() => {})
+        } else {
+          navigator.clipboard.writeText(text).then(() => alert("Copied!"))
+        }
+      }
+
+      document.getElementById("loanAmount").addEventListener("input", calculatePayment)
+      document.getElementById("interestRate").addEventListener("input", calculatePayment)
+      document.getElementById("loanTerm").addEventListener("change", calculatePayment)
+      calculatePayment()
+    </script>
+</body>
+</html>
