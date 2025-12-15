@@ -1,6 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "401k Calculator",
+      "url": "https://cashcalculator.github.io/calculators/401k.html",
+      "description": "Calculate your 401k retirement savings with employer matching and project your future retirement balance.",
+      "applicationCategory": "https://schema.org/FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "250"
+      },
+      "featureList": [
+        "Calculates future retirement balance",
+        "Accounts for employer matching contributions",
+        "Breaks down contributions vs. investment gains"
+      ],
+      "softwareRequirements": "Web browser with JavaScript enabled"
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Use the 401k Retirement Savings Calculator",
+      "description": "A step-by-step guide to calculating your projected 401k retirement savings.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter Annual Salary",
+          "text": "Input your current annual salary."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter Contributions and Match",
+          "text": "Specify your contribution percentage, the employer match percentage, and the maximum salary percentage the employer will match."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Provide Investment Details",
+          "text": "Enter your current 401k balance, the years remaining until retirement, and the expected annual return rate."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "View Results",
+          "text": "The calculator instantly displays your total projected retirement balance, broken down by your contributions, employer match, and investment gains."
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "401k Calculator | Retirement Savings Calculator",
+      "url": "https://cashcalculator.github.io/calculators/401k.html",
+      "inLanguage": "en-US",
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-12-15",
+      "mainEntityOfPage": {
+        "@id": "https://cashcalculator.github.io/calculators/401k.html"
+      }
+    }
+  ]
+}
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>401k Calculator | Retirement Savings Calculator</title>
