@@ -1,586 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Cash Calculator",
-      "url": "https://cashcalculator.github.io/",
-      "description": "Access 15+ free financial calculators including mortgage, loan, investment, tax, and retirement calculators. Make informed financial decisions with easy-to-use tools.",
-      "keywords": "free financial calculators, mortgage calculator, loan calculator, investment calculator, tax calculator, retirement calculator, 401k calculator, personal finance tools, finance calculators, BMI calculator, payroll calculator, macro calculator",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Cash Calculator Team",
-        "url": "https://cashcalculator.github.io/"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://cashcalculator.github.io/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "mainContentOfPage": {
-        "@type": "WebPageElement",
-        "cssSelector": ".all-calculators-section"
-      },
-      "name": "All Financial Calculators",
-      "description": "A comprehensive list of all financial calculators available on Cash Calculator, categorized by Loans, Tax & Retirement, Investment, and Health & Other.",
-      "url": "https://cashcalculator.github.io/index.html",
-      "about": [
-        {
-          "@type": "SoftwareApplication",
-          "name": "Mortgage Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/mortgage.html",
-          "description": "Calculate monthly mortgage payments with taxes and insurance, and see the amortization schedule."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Car Loan Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/car-loan.html",
-          "description": "Determine your auto loan payments and total interest."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Home Loan Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/home-loan.html",
-          "description": "Calculate home equity loan payments and costs."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Personal Loan Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/personal-loan.html",
-          "description": "Estimate personal loan payments and interest costs."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Student Loan Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/student-loan.html",
-          "description": "Calculate student loan payments with different repayment plans."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Payment Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/payment.html",
-          "description": "Calculate loan payments with amortization schedule."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Tax Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/tax.html",
-          "description": "Estimate federal and state income tax obligations."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Tax Return Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/tax-return.html",
-          "description": "Calculate your potential tax refund or amount owed."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "401k Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/401k.html",
-          "description": "Project your 401k retirement savings with employer match."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Pension Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/pension.html",
-          "description": "Calculate your pension benefit and retirement income."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Investment Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/investment.html",
-          "description": "Calculate compound interest and investment growth."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "CD Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/cd.html",
-          "description": "Calculate certificate of deposit returns and APY."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "BMI Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/HealthApplication",
-          "url": "/calculators/bmi.html",
-          "description": "Calculate your body mass index and health category."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Payroll Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/FinanceApplication",
-          "url": "/calculators/payroll.html",
-          "description": "Calculate net pay after taxes and deductions."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Macro Calculator",
-          "operatingSystem": "All",
-          "applicationCategory": "https://schema.org/HealthApplication",
-          "url": "/calculators/macro.html",
-          "description": "Calculate daily calorie and macronutrient needs."
-       }
-     ]
-    }
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Financial Calculators | Mortgage, Loan, Investment & Tax Tools</title>
-    
-        <meta name="keywords" content="financial calculators, free calculators, mortgage, loan, tax, investment, retirement, personal finance tools, 401k, BMI, payroll, compound interest">
-    <link rel="canonical" href="https://cashcalculator.github.io/">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Cash Calculator Team">
-    <meta name="publisher" content="Cash Calculator Team">
-        <meta name="description" content="Access 15+ free financial calculators including mortgage, loan, investment, tax, and retirement calculators. Make informed financial decisions with easy-to-use tools.">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">    
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cash Calculator",
+    "url": "https://cashcalculator.github.io/index.html",
+    "description": "Access 15+ free financial calculators including mortgage, loan, investment, tax, and retirement calculators. Make informed financial decisions with easy-to-use tools.",
+    "keywords": "free financial calculators, mortgage calculator, loan calculator, investment calculator, tax calculator, retirement calculator, 401k calculator, personal finance tools, finance calculators, BMI calculator, payroll calculator, macro calculator",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://cashcalculator.github.io/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "cssSelector": ".all-calculators-section"
+    },
+    "name": "All Financial Calculators",
+    "description": "A comprehensive list of all financial calculators available on Cash Calculator, categorized by Loans, Tax & Retirement, Investment, and Health & Other.",
+    "url": "https://cashcalculator.github.io/index.html",
+    "about": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Mortgage Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/mortgage.html",
+        "description": "Calculate monthly mortgage payments with taxes and insurance, and see the amortization schedule."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Car Loan Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/car-loan.html",
+        "description": "Determine your auto loan payments and total interest."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Home Loan Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/home-loan.html",
+        "description": "Calculate home equity loan payments and costs."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Personal Loan Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/personal-loan.html",
+        "description": "Estimate personal loan payments and interest costs."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Student Loan Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/student-loan.html",
+        "description": "Calculate student loan payments with different repayment plans."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Payment Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/payment.html",
+        "description": "Calculate loan payments with amortization schedule."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Tax Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/tax.html",
+        "description": "Estimate federal and state income tax obligations."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Tax Return Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/tax-return.html",
+        "description": "Calculate your potential tax refund or amount owed."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "401k Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/401k.html",
+        "description": "Project your 401k retirement savings with employer match."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Pension Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/pension.html",
+        "description": "Calculate your pension benefit and retirement income."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Investment Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/investment.html",
+        "description": "Calculate compound interest and investment growth."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CD Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/cd.html",
+        "description": "Calculate certificate of deposit returns and APY."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "BMI Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/HealthApplication",
+        "url": "/calculators/bmi.html",
+        "description": "Calculate your body mass index and health category."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Payroll Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/FinanceApplication",
+        "url": "/calculators/payroll.html",
+        "description": "Calculate net pay after taxes and deductions."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Macro Calculator",
+        "operatingSystem": "All",
+        "applicationCategory": "https://schema.org/HealthApplication",
+        "url": "/calculators/macro.html",
+        "description": "Calculate daily calorie and macronutrient needs."
+       }
+     }
+    </script>
+]
+    <meta charset="UTF-8">
+    <meta name="keywords" content="free financial calculators, mortgage calculator, loan calculator, investment calculator, tax calculator, retirement calculator, 401k calculator, personal finance tools, finance calculators, BMI calculator, payroll calculator, macro calculator">
+<link rel="canonical" href="https://cashcalculator.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Cash Calculator Team">
+<meta name="publisher" content="Cash Calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Financial Calculators | Mortgage, Loan & Tax Tools</title>
+    <meta name="description" content="Access 15+ free financial calculators including mortgage, loan, investment, tax, and retirement calculators. Make informed financial decisions with easy-to-use tools.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-        <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
-                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
-                        <path d="M12 22H20V24H12V22Z" fill="white"/>
-                    </svg>
-                    <span>Cash Calculator</span>
-                </div>
-                <nav class="nav-menu">
-                    <a href="index.html" class="nav-link active">Calculators</a>
-                    <a href="#how-it-works" class="nav-link">How It Works</a>
-                    <a href="#about" class="nav-link">About</a>
-                </nav>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                        <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                        <path d="M12 22H20V24H12V22Z" fill="white"/>
+                    </svg>
+                    <span>Cash Calculator</span>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link active">Calculators</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#about" class="nav-link">About</a>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-        <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Free Financial Calculators</h1>
-                <p class="hero-subtitle">Make informed financial decisions with our suite of easy-to-use calculators</p>
-                
-                <div class="search-bar">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <input type="text" id="searchInput" placeholder="Search calculators (e.g., mortgage, tax, investment)..." class="search-input">
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Free Financial Calculators</h1>
+                <p class="hero-subtitle">Make informed financial decisions with our suite of easy-to-use calculators</p>
+                
+                <div class="search-bar">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search calculators (e.g., mortgage, tax, investment)..." class="search-input">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">Popular Calculators</h2>
-            <div class="featured-grid">
-                <a href="calculators/mortgage.html" class="calculator-card featured">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h3>Mortgage Calculator</h3>
-                    <p>Calculate monthly payments and see amortization schedule</p>
-                    <span class="card-tag">Most Popular</span>
-                </a>
-                
-                <a href="calculators/tax.html" class="calculator-card featured">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3>Tax Calculator</h3>
-                    <p>Estimate your federal and state income taxes</p>
-                    <span class="card-tag">Trending</span>
-                </a>
-                
-                <a href="calculators/investment.html" class="calculator-card featured">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Investment Calculator</h3>
-                    <p>Project your investment growth with compound interest</p>
-                    <span class="card-tag">Essential</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Featured Calculators -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Popular Calculators</h2>
+            <div class="featured-grid">
+                <a href="calculators/mortgage.html" class="calculator-card featured">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Mortgage Calculator</h3>
+                    <p>Calculate monthly payments and see amortization schedule</p>
+                    <span class="card-tag">Most Popular</span>
+                </a>
+                
+                <a href="calculators/tax.html" class="calculator-card featured">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Tax Calculator</h3>
+                    <p>Estimate your federal and state income taxes</p>
+                    <span class="card-tag">Trending</span>
+                </a>
+                
+                <a href="calculators/investment.html" class="calculator-card featured">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Investment Calculator</h3>
+                    <p>Project your investment growth with compound interest</p>
+                    <span class="card-tag">Essential</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <section class="all-calculators-section">
-        <div class="container">
-            <h2 class="section-title">All Financial Calculators</h2>
-            
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-category="all">All Calculators</button>
-                <button class="filter-tab" data-category="loan">Loans</button>
-                <button class="filter-tab" data-category="tax">Tax & Retirement</button>
-                <button class="filter-tab" data-category="investment">Investment</button>
-                <button class="filter-tab" data-category="health">Health & Other</button>
-            </div>
+    <!-- All Calculators -->
+    <section class="all-calculators-section">
+        <div class="container">
+            <h2 class="section-title">All Financial Calculators</h2>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">All Calculators</button>
+                <button class="filter-tab" data-category="loan">Loans</button>
+                <button class="filter-tab" data-category="tax">Tax & Retirement</button>
+                <button class="filter-tab" data-category="investment">Investment</button>
+                <button class="filter-tab" data-category="health">Health & Other</button>
+            </div>
 
-            <div class="calculators-grid" id="calculatorsGrid">
-                                <a href="calculators/mortgage.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3>Mortgage Calculator</h3>
-                    <p>Calculate monthly mortgage payments with taxes and insurance</p>
-                </a>
+            <div class="calculators-grid" id="calculatorsGrid">
+                <!-- Loan Calculators -->
+                <a href="calculators/mortgage.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Mortgage Calculator</h3>
+                    <p>Calculate monthly mortgage payments with taxes and insurance</p>
+                </a>
 
-                <a href="calculators/car-loan.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 16H9m10 0h3l-3.5-5h-5l-1.5 2"></path>
-                            <circle cx="7.5" cy="16.5" r="2.5"></circle>
-                            <circle cx="16.5" cy="16.5" r="2.5"></circle>
-                            <path d="M5 16v-7l2-2h10l2 2v7"></path>
-                        </svg>
-                    </div>
-                    <h3>Car Loan Calculator</h3>
-                    <p>Determine your auto loan payments and total interest</p>
-                </a>
+                <a href="calculators/car-loan.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 16H9m10 0h3l-3.5-5h-5l-1.5 2"></path>
+                            <circle cx="7.5" cy="16.5" r="2.5"></circle>
+                            <circle cx="16.5" cy="16.5" r="2.5"></circle>
+                            <path d="M5 16v-7l2-2h10l2 2v7"></path>
+                        </svg>
+                    </div>
+                    <h3>Car Loan Calculator</h3>
+                    <p>Determine your auto loan payments and total interest</p>
+                </a>
 
-                <a href="calculators/home-loan.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h3>Home Loan Calculator</h3>
-                    <p>Calculate home equity loan payments and costs</p>
-                </a>
+                <a href="calculators/home-loan.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Home Loan Calculator</h3>
+                    <p>Calculate home equity loan payments and costs</p>
+                </a>
 
-                <a href="calculators/personal-loan.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                    </div>
-                    <h3>Personal Loan Calculator</h3>
-                    <p>Estimate personal loan payments and interest costs</p>
-                </a>
+                <a href="calculators/personal-loan.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Personal Loan Calculator</h3>
+                    <p>Estimate personal loan payments and interest costs</p>
+                </a>
 
-                <a href="calculators/student-loan.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Student Loan Calculator</h3>
-                    <p>Calculate student loan payments with different repayment plans</p>
-                </a>
+                <a href="calculators/student-loan.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Student Loan Calculator</h3>
+                    <p>Calculate student loan payments with different repayment plans</p>
+                </a>
 
-                                <a href="calculators/tax.html" class="calculator-card" data-category="tax">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3>Tax Calculator</h3>
-                    <p>Estimate federal and state income tax obligations</p>
-                </a>
+                <!-- Tax & Retirement Calculators -->
+                <a href="calculators/tax.html" class="calculator-card" data-category="tax">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Tax Calculator</h3>
+                    <p>Estimate federal and state income tax obligations</p>
+                </a>
 
-                <a href="calculators/tax-return.html" class="calculator-card" data-category="tax">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Tax Return Calculator</h3>
-                    <p>Calculate your potential tax refund or amount owed</p>
-                </a>
+                <a href="calculators/tax-return.html" class="calculator-card" data-category="tax">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Tax Return Calculator</h3>
+                    <p>Calculate your potential tax refund or amount owed</p>
+                </a>
 
-                <a href="calculators/401k.html" class="calculator-card" data-category="tax">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                        </svg>
-                    </div>
-                    <h3>401k Calculator</h3>
-                    <p>Project your 401k retirement savings with employer match</p>
-                </a>
+                <a href="calculators/401k.html" class="calculator-card" data-category="tax">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>401k Calculator</h3>
+                    <p>Project your 401k retirement savings with employer match</p>
+                </a>
 
-                <a href="calculators/pension.html" class="calculator-card" data-category="tax">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <h3>Pension Calculator</h3>
-                    <p>Calculate your pension benefit and retirement income</p>
-                </a>
+                <a href="calculators/pension.html" class="calculator-card" data-category="tax">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Pension Calculator</h3>
+                    <p>Calculate your pension benefit and retirement income</p>
+                </a>
 
-                                <a href="calculators/investment.html" class="calculator-card" data-category="investment">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Investment Calculator</h3>
-                    <p>Calculate compound interest and investment growth</p>
-                </a>
+                <!-- Investment Calculators -->
+                <a href="calculators/investment.html" class="calculator-card" data-category="investment">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Investment Calculator</h3>
+                    <p>Calculate compound interest and investment growth</p>
+                </a>
 
-                <a href="calculators/cd.html" class="calculator-card" data-category="investment">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                    </div>
-                    <h3>CD Calculator</h3>
-                    <p>Calculate certificate of deposit returns and APY</p>
-                </a>
+                <a href="calculators/cd.html" class="calculator-card" data-category="investment">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>CD Calculator</h3>
+                    <p>Calculate certificate of deposit returns and APY</p>
+                </a>
 
-                <a href="calculators/payment.html" class="calculator-card" data-category="loan">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                            <line x1="1" y1="10" x2="23" y2="10"></line>
-                        </svg>
-                    </div>
-                    <h3>Payment Calculator</h3>
-                    <p>Calculate loan payments with amortization schedule</p>
-                </a>
+                <a href="calculators/payment.html" class="calculator-card" data-category="loan">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3>Payment Calculator</h3>
+                    <p>Calculate loan payments with amortization schedule</p>
+                </a>
 
-                                <a href="calculators/bmi.html" class="calculator-card" data-category="health">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <h3>BMI Calculator</h3>
-                    <p>Calculate your body mass index and health category</p>
-                </a>
+                <!-- Health & Other Calculators -->
+                <a href="calculators/bmi.html" class="calculator-card" data-category="health">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <h3>BMI Calculator</h3>
+                    <p>Calculate your body mass index and health category</p>
+                </a>
 
-                <a href="calculators/payroll.html" class="calculator-card" data-category="health">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                        </svg>
-                    </div>
-                    <h3>Payroll Calculator</h3>
-                    <p>Calculate net pay after taxes and deductions</p>
-                </a>
+                <a href="calculators/payroll.html" class="calculator-card" data-category="health">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Payroll Calculator</h3>
+                    <p>Calculate net pay after taxes and deductions</p>
+                </a>
 
-                <a href="calculators/macro.html" class="calculator-card" data-category="health">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2"></path>
-                        </svg>
-                    </div>
-                    <h3>Macro Calculator</h3>
-                    <p>Calculate daily calorie and macronutrient needs</p>
-                </a>
-            </div>
-        </div>
-    </section>
+                <a href="calculators/macro.html" class="calculator-card" data-category="health">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3>Macro Calculator</h3>
+                    <p>Calculate daily calorie and macronutrient needs</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <section class="features-section" id="about">
-        <div class="container">
-            <h2 class="section-title">Why Choose Our Calculators?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <h3>100% Free Forever</h3>
-                    <p>No hidden fees, no subscriptions. All calculators are completely free to use.</p>
-                </div>
+    <!-- Features Section -->
+    <section class="features-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Calculators?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>100% Free Forever</h3>
+                    <p>No hidden fees, no subscriptions. All calculators are completely free to use.</p>
+                </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h3>Private & Secure</h3>
-                    <p>All calculations happen in your browser. Your data never leaves your device.</p>
-                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Private & Secure</h3>
+                    <p>All calculations happen in your browser. Your data never leaves your device.</p>
+                </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Accurate Results</h3>
-                    <p>Industry-standard formulas ensure precise calculations every time.</p>
-                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Accurate Results</h3>
+                    <p>Industry-standard formulas ensure precise calculations every time.</p>
+                </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Works perfectly on desktop, tablet, and mobile devices.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on desktop, tablet, and mobile devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="how-it-works-section" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Choose Calculator</h3>
-                    <p>Select the financial calculator that fits your needs</p>
-                </div>
+    <!-- How It Works Section -->
+    <section class="how-it-works-section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Choose Calculator</h3>
+                    <p>Select the financial calculator that fits your needs</p>
+                </div>
 
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Enter Information</h3>
-                    <p>Input your financial details into the form</p>
-                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Enter Information</h3>
+                    <p>Input your financial details into the form</p>
+                </div>
 
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Get Results</h3>
-                    <p>View instant calculations and detailed breakdowns</p>
-                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Get Results</h3>
+                    <p>View instant calculations and detailed breakdowns</p>
+                </div>
 
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Make Decisions</h3>
-                    <p>Use insights to make informed financial choices</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Make Decisions</h3>
+                    <p>Use insights to make informed financial choices</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="32" height="32" rx="8" fill="#0070F3"/>
-                            <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
-                            <path d="M12 22H20V24H12V22Z" fill="white"/>
-                        </svg>
-                        <span>Cash Calculator</span>
-                    </div>
-                    <p class="footer-description">Free financial calculators to help you make informed decisions about loans, investments, taxes, and more.</p>
-                </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="8" fill="#0070F3"/>
+                            <path d="M16 8L22 14H18V20H14V14H10L16 8Z" fill="white"/>
+                            <path d="M12 22H20V24H12V22Z" fill="white"/>
+                        </svg>
+                        <span>Cash Calculator</span>
+                    </div>
+                    <p class="footer-description">Free financial calculators to help you make informed decisions about loans, investments, taxes, and more.</p>
+                </div>
 
-                <div class="footer-column">
-                    <h4>Loan Calculators</h4>
-                    <ul>
-                        <li><a href="calculators/mortgage.html">Mortgage</a></li>
-                        <li><a href="calculators/car-loan.html">Car Loan</a></li>
-                        <li><a href="calculators/home-loan.html">Home Loan</a></li>
-                        <li><a href="calculators/personal-loan.html">Personal Loan</a></li>
-                        <li><a href="calculators/student-loan.html">Student Loan</a></li>
-                    </ul>
-                </div>
+                <div class="footer-column">
+                    <h4>Loan Calculators</h4>
+                    <ul>
+                        <li><a href="calculators/mortgage.html">Mortgage</a></li>
+                        <li><a href="calculators/car-loan.html">Car Loan</a></li>
+                        <li><a href="calculators/home-loan.html">Home Loan</a></li>
+                        <li><a href="calculators/personal-loan.html">Personal Loan</a></li>
+                        <li><a href="calculators/student-loan.html">Student Loan</a></li>
+                    </ul>
+                </div>
 
-                <div class="footer-column">
-                    <h4>Tax & Retirement</h4>
-                    <ul>
-                        <li><a href="calculators/tax.html">Tax Calculator</a></li>
-                        <li><a href="calculators/tax-return.html">Tax Return</a></li>
-                        <li><a href="calculators/401k.html">401k Calculator</a></li>
-                        <li><a href="calculators/pension.html">Pension</a></li>
-                    </ul>
-                </div>
+                <div class="footer-column">
+                    <h4>Tax & Retirement</h4>
+                    <ul>
+                        <li><a href="calculators/tax.html">Tax Calculator</a></li>
+                        <li><a href="calculators/tax-return.html">Tax Return</a></li>
+                        <li><a href="calculators/401k.html">401k Calculator</a></li>
+                        <li><a href="calculators/pension.html">Pension</a></li>
+                    </ul>
+                </div>
 
-                <div class="footer-column">
-                    <h4>More Calculators</h4>
-                    <ul>
-                        <li><a href="calculators/investment.html">Investment</a></li>
-                        <li><a href="calculators/cd.html">CD Calculator</a></li>
-                        <li><a href="calculators/bmi.html">BMI</a></li>
-                        <li><a href="calculators/payroll.html">Payroll</a></li>
-                        <li><a href="calculators/macro.html">Macro</a></li>
-                    </ul>
-                </div>
+                <div class="footer-column">
+                    <h4>More Calculators</h4>
+                    <ul>
+                        <li><a href="calculators/investment.html">Investment</a></li>
+                        <li><a href="calculators/cd.html">CD Calculator</a></li>
+                        <li><a href="calculators/bmi.html">BMI</a></li>
+                        <li><a href="calculators/payroll.html">Payroll</a></li>
+                        <li><a href="calculators/macro.html">Macro</a></li>
+                    </ul>
+                </div>
 
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cash Calculator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
